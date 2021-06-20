@@ -8,7 +8,10 @@ import java.util.List;
 
 public class Helper {
 
-  public LocalDateTime setResolvedDate(LocalDateTime submitDate, int days) {
+  public LocalDateTime setResolvedDate(LocalDateTime submitDate, int days) throws Exception {
+    if (submitDate == null) {
+      throw new Exception();
+    }
     LocalDateTime result = submitDate;
     if (days == 0 && submitDate.getDayOfWeek() == DayOfWeek.SATURDAY ||
         submitDate.getDayOfWeek() == DayOfWeek.SUNDAY) {
@@ -25,7 +28,10 @@ public class Helper {
     return result;
   }
 
-  public LocalDateTime setResolvedTime(LocalDateTime dateTime, int hours) {
+  public LocalDateTime setResolvedTime(LocalDateTime dateTime, int hours) throws Exception {
+    if (dateTime == null) {
+      throw new Exception();
+    }
     LocalDateTime result = dateTime;
 
     List<Integer> workingHours;
